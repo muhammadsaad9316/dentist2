@@ -1,0 +1,129 @@
+.amenities-section {
+    position: relative;
+    background-color: #F5F1ED;
+    /* Match existing bg */
+    padding: 6rem 2rem;
+    color: #4A342A;
+    display: flex;
+    justify-content: center;
+}
+
+.amenities-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+/* Left Column - Text */
+.amenities-text-content {
+    flex: 1;
+    max-width: 500px;
+}
+
+.amenities-title {
+    font-family: 'Georgia', serif;
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #4A342A;
+    /* Dark brown */
+    margin-bottom: 2rem;
+}
+
+.amenities-description {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    color: #6B4C3E;
+    /* Lighter brown text */
+    max-width: 450px;
+}
+
+/* Right Column - Grid */
+.amenities-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 2rem;
+    row-gap: 3rem;
+}
+
+.amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.amenity-icon-wrapper {
+    color: #4A342A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.amenity-label {
+    font-family: 'Georgia', serif;
+    /* Or Arial depending on preference, image looks serif-ish or clean sans */
+    font-family: 'Arial', sans-serif;
+    /* Actually image labels look like Serif/Georgia maybe? matching headers? Let's check image... labels look like serif actually. */
+    font-family: 'Georgia', serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #4A342A;
+    line-height: 1.2;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .amenities-container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+
+    .amenities-text-content {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .amenities-title {
+        font-size: 2.5rem;
+
+        br {
+            display: none;
+        }
+
+        /* Unwrap title on mobile/tablet */
+    }
+
+    .amenities-description {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .amenities-grid {
+        grid-template-columns: 1fr;
+        /* Single column layout for icons on small screens? Or keep 2? image has 2. Mobile maybe 1 is better. */
+        grid-template-columns: repeat(2, 1fr);
+        /* Keep 2 for tablet */
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .amenities-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .amenities-grid {
+        grid-template-columns: 1fr;
+        /* Stack on very small screens */
+    }
+
+    .amenities-title {
+        font-size: 2rem;
+    }
+}

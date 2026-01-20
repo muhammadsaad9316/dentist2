@@ -1,0 +1,252 @@
+/* Navbar Container */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #F5F1ED;
+    padding: 1.25rem 2.5rem;
+    z-index: 1000;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+/* Navbar on Scroll - Enhanced Background & Shadow */
+.navbar-scrolled {
+    background-color: rgba(245, 241, 237, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+/* Logo Styling */
+.navbar-logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.8;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+
+.logo-saad {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #6B4C3E;
+    font-family: 'Georgia', serif;
+    letter-spacing: 0.05em;
+}
+
+.logo-subtitle {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #6B4C3E;
+    letter-spacing: 0.1em;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Navigation Links */
+.navbar-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+    /* Moved links to the right, nearer to buttons */
+    margin-right: 2rem;
+    /* Optional spacing to fine tune "a little near" */
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #6B4C3E;
+    font-size: 1rem;
+    font-weight: 700;
+    /* Made text bolder */
+    transition: color 0.3s ease;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    padding: 0.5rem 0;
+    /* Added padding for better hover target */
+    display: inline-block;
+    letter-spacing: 0.02em;
+}
+
+.nav-link:hover {
+    color: #4A342A;
+}
+
+/* Dropdown Styles */
+.nav-item-dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* Ensure the hover triggers on the container */
+.nav-item-dropdown:hover .nav-link {
+    color: #4A342A;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    /* Align with left of parent */
+    background-color: #FFFFFF;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    /* Soft shadow */
+    border-radius: 8px;
+    /* Slightly rounded corners */
+    padding: 1rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 1001;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(10px);
+    /* Add a small gap or keep shifting */
+    /* Actually, to match the image, it sits a bit below. 
+     Let's adjust top and transform to be smooth */
+    top: 100%;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    text-decoration: none;
+    color: #6B4C3E;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-family: 'Arial', sans-serif;
+    display: block;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background-color: #F9F6F3;
+    color: #4A342A;
+}
+
+/* Action Buttons */
+.navbar-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-book-now,
+.btn-call-now {
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn-book-now {
+    background-color: #6B4C3E;
+    color: #FFFFFF;
+    border: 2px solid #6B4C3E;
+}
+
+.btn-book-now:hover {
+    background-color: #4A342A;
+    border-color: #4A342A;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 76, 62, 0.2);
+}
+
+.btn-call-now {
+    background-color: transparent;
+    color: #6B4C3E;
+    border: 2px solid #6B4C3E;
+}
+
+.btn-call-now:hover {
+    background-color: #6B4C3E;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(107, 76, 62, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .navbar-links {
+        gap: 1.5rem;
+    }
+
+    .navbar-container {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+
+    .navbar-links {
+        display: none;
+    }
+
+    .navbar-actions {
+        gap: 0.75rem;
+    }
+
+    .btn-book-now,
+    .btn-call-now {
+        padding: 0.6rem 1.25rem;
+        font-size: 0.85rem;
+    }
+
+    .logo-saad {
+        font-size: 1.5rem;
+    }
+
+    .logo-subtitle {
+        font-size: 0.65rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .btn-book-now,
+    .btn-call-now {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+    }
+}

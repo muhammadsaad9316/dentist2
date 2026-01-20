@@ -1,0 +1,213 @@
+/* Hero Section Styling */
+.hero-section {
+    padding-top: 0;
+    /* Removed padding to move content to the very top */
+    /* Minimal clearance to sit just under navbar */
+    padding-bottom: 5rem;
+    background-color: #F5F1ED;
+    min-height: 90vh;
+    display: flex;
+    align-items: flex-start;
+    /* critical: moves content up from center */
+    overflow: hidden;
+    /* Prevent marquee from scrolling outside section */
+}
+
+.hero-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.hero-content-left {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    margin-top: 4rem;
+    /* Additional push down to balance the layout */
+}
+
+.hero-content-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    height: 600px;
+    /* Set a fixed height for the marquee window */
+}
+
+/* Marquee Styling */
+.marquee {
+    position: relative;
+    height: 100%;
+    width: 300px;
+    /* Adjust based on image size */
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.marquee-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, #F5F1ED 0%, transparent 15%, transparent 85%, #F5F1ED 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.track-vertical {
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.flex-vertical.marquee-fix {
+    display: flex;
+    flex-direction: column;
+    animation: marquee-vertical 40s linear infinite;
+}
+
+@keyframes marquee-vertical {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-50%);
+        /* Adjust based on duplicated content height */
+    }
+}
+
+.icon-container {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.icon-3 {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.spacer-30 {
+    height: 30px;
+    width: 100%;
+}
+
+/* Typography matching the uploaded image */
+.hero-top-text {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    color: #8C7B75;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+
+.h1.is-jumbo {
+    font-family: 'Georgia', serif;
+    font-size: 5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    color: #6B4C3E;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.hero-bottom-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.125rem;
+    color: #6B4C3E;
+    line-height: 1.6;
+    opacity: 0.9;
+    max-width: 520px;
+    margin-bottom: 3rem;
+    font-weight: 400;
+}
+
+/* Hero specific buttons */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.btn-book-now-hero {
+    background-color: #6B4C3E;
+    color: #FFFFFF;
+    border: 2px solid #6B4C3E;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-book-now-hero:hover {
+    background-color: #4A342A;
+    border-color: #4A342A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(107, 76, 62, 0.2);
+}
+
+.btn-call-now-hero {
+    background-color: transparent;
+    color: #6B4C3E;
+    border: 2px solid #6B4C3E;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-call-now-hero:hover {
+    background-color: #6B4C3E;
+    color: #FFFFFF;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(107, 76, 62, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .h1.is-jumbo {
+        font-size: 3.5rem;
+    }
+
+    .hero-content-right {
+        display: none;
+        /* Hide marquee on smaller screens as typical pattern */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        padding-top: 2rem;
+    }
+
+    .hero-section {
+        padding-top: 100px;
+        align-items: flex-start;
+    }
+
+    .h1.is-jumbo {
+        font-size: 3rem;
+    }
+
+    .hero-bottom-text {
+        margin-bottom: 2rem;
+    }
+}

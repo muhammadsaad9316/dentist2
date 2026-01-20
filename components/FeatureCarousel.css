@@ -1,0 +1,327 @@
+/* Feature Carousel Section */
+.feature-carousel-section {
+    position: relative;
+    min-height: 100vh;
+    background-color: #F5F1ED;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Section Header */
+.feature-carousel-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    z-index: 10;
+}
+
+.section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #2D2D2D;
+    font-family: 'Georgia', serif;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: #6B4C3E;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Carousel Container - CRUCIAL for stacking */
+.feature-carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    /* Create a stable stacking context */
+    transform-style: preserve-3d;
+}
+
+/* Feature Cards - Stacked Absolutely */
+.feature-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 30px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 20px 60px rgba(107, 76, 62, 0.15);
+    /* Brown shadow */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Initial state */
+    color: #6B4C3E;
+    /* overflow: hidden;  <-- REMOVED to prevent cutting off content */
+    border: 1px solid rgba(107, 76, 62, 0.05);
+    justify-content: flex-start;
+    /* Changed from center to allow better stacking from top if needed, or stick to center but ensure space */
+    padding-top: 5rem;
+    /* Ensure consistent top spacing */
+
+    /* Hardware acceleration for smoother animation */
+    will-change: transform, filter;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    perspective: 1000px;
+}
+
+.card-dim-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    border-radius: 30px;
+    transition: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: opacity;
+}
+
+/* Decorative Elements - Subtle beige gradient instead of white overlay */
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(245, 241, 237, 0.5) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Feature Icon */
+.feature-icon {
+    width: 120px;
+    height: 120px;
+    background: #F5F1ED;
+    /* Beige background */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border: none;
+    position: relative;
+    box-shadow: inset 0 2px 10px rgba(107, 76, 62, 0.05);
+    flex-shrink: 0;
+    /* Prevent icon from shrinking */
+}
+
+.feature-emoji {
+    font-size: 4rem;
+    /* Removed harsh drop shadow */
+}
+
+/* Feature Text */
+.feature-title {
+    color: #6B4C3E;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Georgia', serif;
+}
+
+.feature-text {
+    color: #4A342A;
+    /* Darker brown for contrast */
+    font-size: 1.25rem;
+    line-height: 1.8;
+    font-family: 'Arial', sans-serif;
+    max-width: 600px;
+}
+
+/* Card Number */
+.card-number {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 6rem;
+    font-weight: 700;
+    color: rgba(107, 76, 62, 0.05);
+    /* Subtle brown */
+    font-family: 'Georgia', serif;
+    line-height: 1;
+}
+
+/* Navigation Dots */
+.carousel-nav {
+    position: fixed;
+    right: 3rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 100;
+}
+
+.carousel-nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #D4C4B8;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.carousel-nav-dot:hover {
+    background-color: #6B4C3E;
+    transform: scale(1.3);
+}
+
+.carousel-nav-dot.active {
+    background-color: #6B4C3E;
+    transform: scale(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .feature-carousel-container {
+        max-width: 650px;
+        height: 480px;
+    }
+
+    .carousel-nav {
+        right: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-carousel-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .feature-carousel-container {
+        max-width: 100%;
+        height: 450px;
+    }
+
+    .feature-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 20px;
+    }
+
+    .feature-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 2rem;
+    }
+
+    .feature-emoji {
+        font-size: 3rem;
+    }
+
+    .feature-title {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .feature-text {
+        font-size: 1.1rem;
+    }
+
+    .card-number {
+        font-size: 4rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+
+    .carousel-nav {
+        right: 1.5rem;
+        gap: 0.75rem;
+    }
+
+    .carousel-nav-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-carousel-section {
+        padding: 2rem 1rem;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .feature-carousel-header {
+        margin-bottom: 3rem;
+    }
+
+    .feature-carousel-container {
+        height: 420px;
+    }
+
+    .feature-card {
+        padding: 2.5rem 1.5rem;
+        border-radius: 16px;
+    }
+
+    .feature-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+    }
+
+    .feature-emoji {
+        font-size: 2.5rem;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .feature-text {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .card-number {
+        font-size: 3rem;
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    .carousel-nav {
+        right: 1rem;
+        gap: 0.6rem;
+    }
+
+    .carousel-nav-dot {
+        width: 8px;
+        height: 8px;
+    }
+}
